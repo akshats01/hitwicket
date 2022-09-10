@@ -1,4 +1,4 @@
-APPROACH
+APPROACH(turbo c++)
 
 Since, I've made games on C++ previously, I already had an idea on how to approach this game. I always begin with the basics and work my way up, so I first created just the chess board, then the ability to give names, then the ability to move and then the levels.
 
