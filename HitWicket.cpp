@@ -73,7 +73,7 @@ void main(){
 			cout<<"B"<<B[i];
 		}
 	    }
-	    gotoxy(1,6);
+	    gotoxy(1,9);
 	    cout<<"Type \"exit\" to exit the game";
 	    gotoxy(1,12);
 	    cout<<"A move:";
@@ -94,6 +94,8 @@ void main(){
 	    choice=getch();
 	    if(choice=='L'||choice=='l'){
 		temp=posA[pos][0]-10;
+		if(strcmp(A[pos],"H1")==0||strcmp(A[pos],"H2")==0)
+			temp-=10;
 		if(temp<1)
 		{	cout<<"Invalid Choice";
 			getch();
@@ -109,7 +111,7 @@ void main(){
 		{	cout<<"Invalid Choice";
 			continue;
 		}
-		posA[pos][0]-=10;
+		posA[pos][0]=temp;
 		for(i=0;i<5;i++){
 			if(posB[i][0]==temp&&posB[i][1]==posA[pos][1]){
 				posB[i][0]=-1;
@@ -120,6 +122,8 @@ void main(){
 	    }
 	    else if(choice=='R'||choice=='r'){
 		temp=posA[pos][0]+10;
+		if(strcmp(A[pos],"H1")==0||strcmp(A[pos],"H2")==0)
+			temp+=10;
 		if(temp>45)
 		{	cout<<"Invalid Choice";
 			continue;
@@ -134,7 +138,7 @@ void main(){
 		{	cout<<"Invalid Choice";
 			continue;
 		}
-		posA[pos][0]+=10;
+		posA[pos][0]=temp;;
 		for(i=0;i<5;i++){
 			if(posB[i][0]==posA[pos][0]&&posB[i][1]==posA[pos][1]){
 				posB[i][0]=-1;
@@ -145,6 +149,8 @@ void main(){
 	    }
 	    else if(choice=='U'||choice=='u'){
 		temp=posA[pos][1]-1;
+		if(strcmp(A[pos],"H1")==0||strcmp(A[pos],"H2")==0)
+			temp--;
 		if(temp<1)
 		{	cout<<"Invalid Choice";
 			continue;
@@ -159,7 +165,7 @@ void main(){
 		{	cout<<"Invalid Choice";
 			continue;
 		}
-		posA[pos][1]--;
+		posA[pos][1]=temp;
 		for(i=0;i<5;i++){
 			if(posB[i][0]==posA[pos][0]&&posB[i][1]==posA[pos][1]){
 				posB[i][0]=-1;
@@ -170,6 +176,8 @@ void main(){
 	    }
 	    else if(choice=='D'||choice=='d'){
 		temp=posA[pos][1]+1;
+		if(strcmp(A[pos],"H1")==0||strcmp(A[pos],"H2")==0)
+			temp++;
 		if(temp>5)
 		{	cout<<"Invalid Choice";
 			continue;
@@ -184,7 +192,7 @@ void main(){
 		{	cout<<"Invalid Choice";
 			continue;
 		}
-		posA[pos][1]++;
+		posA[pos][1]=temp;
 		for(i=0;i<5;i++){
 			if(posB[i][0]==posA[pos][0]&&posB[i][1]==posA[pos][1]){
 				posB[i][0]=-1;
@@ -199,7 +207,9 @@ void main(){
 	    }
 	    flag=1;
 	    }while(!flag);
-
+	    if(count2<=0){
+		break;
+	    }
 	    do{
 	    flag=1;
 	    do{
@@ -221,7 +231,7 @@ void main(){
 			cout<<"B"<<B[i];
 		}
 	    }
-	    gotoxy(1,5);
+	    gotoxy(1,9);
 	    cout<<"Type \"exit\" to exit the game";
 	    gotoxy(1,12);
 	    cout<<"B move:";
@@ -240,6 +250,8 @@ void main(){
 	    choice=getch();
 	    if(choice=='L'||choice=='l'){
 		temp=posB[pos][0]-10;
+		if(strcmp(B[pos],"H1")==0||strcmp(B[pos],"H2")==0)
+			temp-=10;
 		if(temp<1)
 		{	cout<<"Invalid Choice";
 			flag=0;
@@ -255,7 +267,7 @@ void main(){
 			flag=0;
 		}
 		if(flag==1)
-		{	posB[pos][0]-=10;
+		{	posB[pos][0]=temp;
 			for(i=0;i<5;i++){
 			if(posA[i][0]==posB[pos][0]&&posA[i][1]==posB[pos][1]){
 				posA[i][0]=-1;
@@ -268,6 +280,8 @@ void main(){
 	    }
 	    else if(choice=='R'||choice=='r'){
 		temp=posB[pos][0]+10;
+		if(strcmp(B[pos],"H1")==0||strcmp(B[pos],"H2")==0)
+			temp+=10;
 		if(temp>45)
 		{	cout<<"Invalid Choice";
 			flag=0;
@@ -283,7 +297,7 @@ void main(){
 			flag=0;
 		}
 		if(flag==1)
-		{	posB[pos][0]+=10;
+		{	posB[pos][0]=temp;
 			for(i=0;i<5;i++){
 			if(posA[i][0]==posB[pos][0]&&posA[i][1]==posB[pos][1]){
 				posA[i][0]=-1;
@@ -295,6 +309,8 @@ void main(){
 	    }
 	    else if(choice=='U'||choice=='u'){
 		temp=posB[pos][1]-1;
+		if(strcmp(B[pos],"H1")==0||strcmp(B[pos],"H2")==0)
+			temp--;
 		if(temp<1)
 		{	cout<<"Invalid Choice";
 			flag=0;
@@ -310,7 +326,7 @@ void main(){
 			flag=0;
 		}
 		if(flag==1)
-		{	posB[pos][1]--;
+		{	posB[pos][1]=temp;
 			for(i=0;i<5;i++){
 			if(posA[i][0]==posB[pos][0]&&posA[i][1]==posB[pos][1]){
 				posA[i][0]=-1;
@@ -322,6 +338,8 @@ void main(){
 	    }
 	    else if(choice=='D'||choice=='d'){
 		temp=posB[pos][1]+1;
+		if(strcmp(B[pos],"H1")==0||strcmp(B[pos],"H2")==0)
+			temp++;
 		if(temp>5)
 		{	cout<<"Invalid Choice";
 			flag=0;
@@ -337,7 +355,7 @@ void main(){
 			flag=0;
 		}
 		if(flag==1)
-		{	posB[pos][1]++;
+		{	posB[pos][1]=temp;
 			for(i=0;i<5;i++){
 			if(posA[i][0]==posB[pos][0]&&posA[i][1]==posB[pos][1]){
 				posA[i][0]=-1;
